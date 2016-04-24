@@ -1,0 +1,30 @@
+{
+  "name": "alcopa",
+  "version": "0.0.1",
+  "description": "",
+  "repository": "https://github.com/AlcopaAuction-IT/front_v3",
+  "private": "true",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "http-server": "^0.9.0",
+    "node-sass": "^3.4.2",
+    "postcss-cli": "^2.5.1",
+    "purify-css": "^1.1.9",
+    "watch": "^0.17.1"
+  },
+  "scripts": {
+    "start": "http-server . -p 4567 &",
+    "build:html": "python3 ssg_mustache.py",
+    "build:css": "node-sass stylesheets/bundle.scss public/css/bundle.css",
+    "watch:html": "watch 'npm run build:html && npm run show-fake-prompt' _pages _components -d &",
+    "watch:css": "watch 'npm run build:css && npm run show-fake-prompt' stylesheets _components -d &",
+    "stop": "echo 'Stopping all Node processes (including Node-Sass watcher and http-server).' && killall node || true",
+    "show-fake-prompt": "printf 'fake@fake:/fake-prompt$ '",
+    "b": "npm run build:css && npm run build:html",
+    "w": "npm run watch:css && npm run watch:html",
+    "x": "npm run stop",
+    "p": "npm run prod:css",
+    "sw": "npm start && npm run watch:html && npm run watch:css"
+  }
+}
